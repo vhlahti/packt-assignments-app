@@ -15,11 +15,33 @@
 
 <!-- styling with custom directive 'submitted.directive.ts'-->
 
-<form ngForm #assignmentsForm>
+<form ngForm #assignmentsForm class="form">
+
+    <mat-form-field>
+        <input matInput
+        #assignmentName
+        [(ngModel)]="name"
+        name="inputName">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="dueDate"
+        name="dateName" placeholder="When your assignment is due?">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
     <button mat-stroked-button
     [disabled]="!enabled"
+    (click)="onSubmit(); assignmentsForm.reset()"
     color="primary">Add assignment</button>
+
 </form>
+
+<p>{{ name }}</p>
+<p>{{ dueDate }}</p>
 
 <div *ngFor="let assignment of assignments"> 
 
