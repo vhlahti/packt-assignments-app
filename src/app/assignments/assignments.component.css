@@ -1,0 +1,6 @@
+.submitted {
+    color: green;
+}
+.unsubmitted {
+    color: red;
+}

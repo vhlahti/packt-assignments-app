@@ -1,0 +1,27 @@
+<!-- styling with ngStyle
+
+    <div *ngFor="let assignment of assignments"
+[ngStyle]="{'color': assignment.submitted === false ? 'red': 'green'}"> 
+
+-->
+
+<!-- styling with ngClass
+
+<div *ngFor="let assignment of assignments"
+[ngClass]="{'submitted': assignment.submitted === true,
+'unsubmitted': assignment.submitted === false}">
+
+-->
+
+<!-- styling with custom directive 'submitted.directive.ts'-->
+
+<div *ngFor="let assignment of assignments"> 
+
+<p appSubmitted *ngIf="assignment.submitted; else unsubmitted">
+    Assignment {{ assignment.name }} has been submitted!</p>
+
+    <ng-template #unsubmitted>
+        Assignment {{ assignment.name }} hasn't been submitted!
+    </ng-template>
+    
+</div>
