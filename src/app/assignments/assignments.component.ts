@@ -13,6 +13,8 @@ export class AssignmentsComponent implements OnInit{
   name: string;
   dueDate: Date;
 
+  selectedAssignment: Assignment;
+
   assignments: Assignment[] = [{
     name: 'One',
     dueDate: new Date('2023-02-01'),
@@ -40,6 +42,10 @@ export class AssignmentsComponent implements OnInit{
     assignment.submitted = false;
 
     this.assignments.push(assignment);
+  }
+
+  setSelected(assignment: Assignment) {
+     this.selectedAssignment = assignment;
   }
 
 }
