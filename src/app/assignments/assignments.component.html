@@ -15,34 +15,11 @@
 
 <!-- styling with custom directive 'submitted.directive.ts'-->
 
-<form ngForm #assignmentsForm class="form">
-
-    <mat-form-field>
-        <input matInput
-        #assignmentName
-        [(ngModel)]="name"
-        name="inputName" placeholder="Enter assignment name">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput
-        [matDatepicker]="picker"
-        [(ngModel)]="dueDate"
-        name="dateName" placeholder="When is your assignment  due?">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <button mat-stroked-button
-    [disabled]="!enabled"
-    (click)="onSubmit(); assignmentsForm.reset()"
-    color="primary">Add assignment</button>
-
-</form>
-
-<p>{{ name }}</p>
-<p>{{ dueDate }}</p>
-
+<section class="mainFrame">
+<main class="container" *ngIf="formVisible === false">
+<button class="addBtn"
+mat-flat-button color="accent"
+(click)="onAddBtnClick()">Add assignment</button>
 <mat-list *ngFor="let assignment of assignments"> 
 <h3 mat-subheader>{{ assignment.dueDate | date}}</h3>
 <mat-list-item (click)="setSelected(assignment)">
@@ -55,5 +32,10 @@
 </mat-list-item>
 <mat-divider></mat-divider>
 </mat-list>
+</main>
+
+<app-add-assignment (newAssignment)="onNewAssignment($event)"
+*ngIf="formVisible"></app-add-assignment>
 
 <app-assignment-detail [passedAssignment]="selectedAssignment"></app-assignment-detail>
+</section>

@@ -10,8 +10,7 @@ export class AssignmentsComponent implements OnInit{
 
   title = 'My Assignments Application';
   enabled = false;
-  name: string;
-  dueDate: Date;
+  formVisible = false;
 
   selectedAssignment: Assignment;
 
@@ -35,17 +34,18 @@ export class AssignmentsComponent implements OnInit{
     
   }
 
-  onSubmit() {
-    const assignment = new Assignment();
-    assignment.name = this.name;
-    assignment.dueDate = this.dueDate;
-    assignment.submitted = false;
-
-    this.assignments.push(assignment);
-  }
-
   setSelected(assignment: Assignment) {
      this.selectedAssignment = assignment;
+  }
+
+  onAddBtnClick() {
+      this.formVisible = true;
+      this.selectedAssignment = null;
+  }
+
+  onNewAssignment(event: Assignment) {
+    this.assignments.push(event);
+    this.formVisible = false;
   }
 
 }
