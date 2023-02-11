@@ -20,7 +20,13 @@ export class AssignmentsComponent implements OnInit{
   constructor(private assignmentsService: AssignmentsService) {}
 
   ngOnInit(): void {
-    this.assignments = this.assignmentsService.getAssignments();
+    // this.assignments = this.assignmentsService.getAssignments();
+    this.getAssignments();
+  }
+
+  getAssignments() {
+    this.assignmentsService.getAssignments()
+    .subscribe(assignments => this.assignments = assignments);
   }
 
   setSelected(assignment: Assignment) {
@@ -33,7 +39,9 @@ export class AssignmentsComponent implements OnInit{
   }
 
   onNewAssignment(event: Assignment) {
-    this.assignments.push(event);
+    this.assignmentsService.addAssignments(event)
+    .subscribe(success => console.log(success));
+
     this.formVisible = false;
   }
 

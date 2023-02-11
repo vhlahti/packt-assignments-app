@@ -2,8 +2,13 @@
     <mat-card>
         <mat-card-title>{{ passedAssignment.name }}</mat-card-title>
         <mat-card-subtitle>{{ passedAssignment.dueDate | date}}</mat-card-subtitle>
+    <div id="bottom">
         <mat-checkbox *ngIf="passedAssignment.submitted === false"
         (click)="onAssignmentSubmitted()">
         Mark as submitted</mat-checkbox>
+        <button mat-flat-button color="warn"
+        (click)="onDelete()">DELETE</button>
+    </div>
     </mat-card>
 </div>
+
