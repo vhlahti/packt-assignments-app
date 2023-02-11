@@ -16,11 +16,19 @@
 <!-- styling with custom directive 'submitted.directive.ts'-->
 
 <section class="mainFrame">
-<main class="container" *ngIf="formVisible === false">
+
+<main class="container">
+
+<div class="addBtn">
+    <a routerLink="/add">
 <button class="addBtn"
 mat-flat-button color="accent"
 (click)="onAddBtnClick()">Add assignment</button>
-<mat-list *ngFor="let assignment of assignments"> 
+    </a>
+</div>
+
+<mat-list *ngFor="let assignment of assignments">
+    <nav><a routerLink="/assignment/{{assignment.id}}">
 <h3 mat-subheader>{{ assignment.dueDate | date}}</h3>
 <mat-list-item (click)="setSelected(assignment)">
 <p appSubmitted *ngIf="assignment.submitted; else unsubmitted">
@@ -31,11 +39,14 @@ mat-flat-button color="accent"
     </ng-template>
 </mat-list-item>
 <mat-divider></mat-divider>
+</a></nav>
 </mat-list>
+
 </main>
 
-<app-add-assignment (newAssignment)="onNewAssignment($event)"
-*ngIf="formVisible"></app-add-assignment>
+<!-- <app-add-assignment (newAssignment)="onNewAssignment($event)"
+*ngIf="formVisible"></app-add-assignment> -->
 
-<app-assignment-detail [passedAssignment]="selectedAssignment"></app-assignment-detail>
+<!-- <app-assignment-detail [passedAssignment]="selectedAssignment"></app-assignment-detail> -->
+
 </section>

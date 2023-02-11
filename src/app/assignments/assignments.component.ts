@@ -34,15 +34,15 @@ export class AssignmentsComponent implements OnInit{
   }
 
   onAddBtnClick() {
-      this.formVisible = true;
+      // this.formVisible = true;
       this.selectedAssignment = null;
   }
 
-  onNewAssignment(event: Assignment) {
-    this.assignmentsService.addAssignments(event)
-    .subscribe(success => console.log(success));
+  // onNewAssignment(event: Assignment) {
+  //   this.assignmentsService.addAssignments(event)
+  //   .subscribe(success => console.log(success));
 
-    this.formVisible = false;
-  }
+  //   this.formVisible = false;
+  // }
 
 }
