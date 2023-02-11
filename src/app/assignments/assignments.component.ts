@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssignmentsService } from '../shared/assignments.service';
 import { Assignment } from './assignment.model';
 
 @Component({
@@ -14,24 +15,12 @@ export class AssignmentsComponent implements OnInit{
 
   selectedAssignment: Assignment;
 
-  assignments: Assignment[] = [{
-    name: 'One',
-    dueDate: new Date('2023-02-01'),
-    submitted: true
-  },
-    {
-    name: 'Two',
-    dueDate: new Date('2023-03-01'),
-    submitted: false
-    }];
-  
-  constructor() {}
+  assignments: Assignment[];
+
+  constructor(private assignmentsService: AssignmentsService) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.enabled = true;
-    }, 2000)
-    
+    this.assignments = this.assignmentsService.getAssignments();
   }
 
   setSelected(assignment: Assignment) {
