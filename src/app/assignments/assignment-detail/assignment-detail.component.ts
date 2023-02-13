@@ -4,7 +4,6 @@ import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { AuthService } from 'src/app/shared/auth.service';
 import { Assignment } from '../assignment.model';
 
-
 @Component({
   selector: 'app-assignment-detail',
   templateUrl: './assignment-detail.component.html',

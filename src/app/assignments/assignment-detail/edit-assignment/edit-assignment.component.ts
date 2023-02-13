@@ -22,7 +22,7 @@ export class EditAssignmentComponent implements OnInit {
     
     const id = +this.route.snapshot.params['id'];
 
-    this.assignmentsService.getAssignment(id);
+    this.getAssignment(id);
 
     console.log(this.route.snapshot.queryParams);
     console.log(this.route.snapshot.fragment);
