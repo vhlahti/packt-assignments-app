@@ -1,0 +1,10 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 8px 2.5em 8px;
+}
+mat-slide-toggle {
+    margin-right: 3rem;
+}

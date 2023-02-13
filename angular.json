@@ -17,7 +17,8 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "node_modules/hammerjs/hammer.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -80,7 +81,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "node_modules/hammerjs/hammer.js"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
