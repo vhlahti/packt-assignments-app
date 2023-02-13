@@ -20,12 +20,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
 import { AssignmentsService } from './shared/assignments.service';
 import { Routes, RouterModule } from '@angular/router';
+import { EditAssignmentComponent } from './assignments/assignment-detail/edit-assignment/edit-assignment.component';
 
 const routes: Routes = [
   {path: '', component: AssignmentsComponent},
   {path: 'home', component: AssignmentsComponent},
   {path: 'add', component: AddAssignmentComponent},
-  {path: 'assignment/:id', component: AssignmentDetailComponent}
+  {path: 'assignment/:id', component: AssignmentDetailComponent},
+  {path: 'assignment/:id/edit', component: EditAssignmentComponent}
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const routes: Routes = [
     AssignmentsComponent,
     SubmittedDirective,
     AssignmentDetailComponent,
-    AddAssignmentComponent
+    AddAssignmentComponent,
+    EditAssignmentComponent
   ],
   imports: [
     BrowserModule,

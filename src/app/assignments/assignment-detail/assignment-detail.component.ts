@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { Assignment } from '../assignment.model';
+import { EditAssignmentComponent } from './edit-assignment/edit-assignment.component';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -43,6 +44,12 @@ export class AssignmentDetailComponent implements OnInit {
     // this.passedAssignment = null;
 
     this.router.navigate(['/home']);
+  }
+
+  onClickEdit() {
+    this.router.navigate(['/assignment', this.passedAssignment.id, 'edit'],
+    {queryParams: {name: this.passedAssignment.name}, fragment: 'editing'});
+    
   }
 
 }
