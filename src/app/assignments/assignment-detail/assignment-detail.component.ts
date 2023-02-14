@@ -29,7 +29,6 @@ export class AssignmentDetailComponent implements OnInit {
     this.assignmentsService.getAssignment(id)
     .subscribe(assignment => this.passedAssignment = assignment);
   }
-    
 
   onAssignmentSubmitted() {
     this.passedAssignment.submitted = true;
@@ -43,7 +42,6 @@ export class AssignmentDetailComponent implements OnInit {
     .subscribe(res => this.router.navigate(['/home']));
 
     // this.passedAssignment = null;
-
 
   }
 

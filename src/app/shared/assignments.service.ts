@@ -1,26 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Assignment } from '../assignments/assignment.model';
-import { Observable, of } from 'rxjs';
+import { Observable, of, map, tap, catchError } from 'rxjs';
 import { LoggingService } from './logging.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssignmentsService {
 
-  assignments: Assignment[] = [{
-    id: 1,
-    name: 'Maths',
-    dueDate: new Date('2023-02-01'),
-    submitted: true
-  },
-    {
-    id: 2,
-    name: 'Science',
-    dueDate: new Date('2023-03-01'),
-    submitted: false
-    }];
+  // assignments: Assignment[] = [{
+  //   id: 1,
+  //   name: 'Maths',
+  //   dueDate: new Date('2023-02-01'),
+  //   submitted: true
+  // },
+  //   {
+  //   id: 2,
+  //   name: 'Science',
+  //   dueDate: new Date('2023-03-01'),
+  //   submitted: false
+  //   }];
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
     url = 'http://localhost:8010/api/assignments';
     urlOne = 'http://localhost:8010/api/assignment';
@@ -38,8 +44,22 @@ export class AssignmentsService {
   getAssignment(id: number): Observable<Assignment> {
   //  return of(this.assignments.find(x => x.id === id));
 
-    return this.http.get<Assignment>(this.urlOne + '/' + id);
+    return this.http.get<Assignment>(this.urlOne + '/' + id)
+    .pipe(
+      // map(res => res.name + ' [VHLAHTI PUBLISHING]'),
+      tap(_ => console.log(`fetched assignment id=${id}`)),
+      catchError(this.handleError<Assignment>(`getAssignment id=${id}`))
+      );
+  }
 
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
+      console.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    }
   }
 
   addAssignments(assignment: Assignment): Observable<any> {
@@ -50,7 +70,7 @@ export class AssignmentsService {
 
     // return of('assignment added!');
 
-    return this.http.post<Assignment>(this.urlOne, assignment);
+    return this.http.post<Assignment>(this.urlOne, assignment, this.httpOptions);
   }
 
   updateAssignments(assignment: Assignment): Observable<any> {
