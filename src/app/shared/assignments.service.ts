@@ -42,35 +42,46 @@ export class AssignmentsService {
 
   }
 
-  addAssignments(assignment: Assignment): Observable<string> {
-    this.assignments.push(assignment);
+  addAssignments(assignment: Assignment): Observable<any> {
+    // assignment.id = this.assignments.length +1;
+    // this.assignments.push(assignment);
 
-    this.loggingService.log(assignment.name, 'added');
+    // this.loggingService.log(assignment.name, 'added');
 
-    return of('assignment added!');
+    // return of('assignment added!');
+
+    return this.http.post<Assignment>(this.urlOne, assignment);
   }
 
-  updateAssignments(assignment: Assignment): Observable<string> {
-    this.assignments.forEach((assignment, i) => {
-      if(assignment === assignment){
-        this.assignments[i] = assignment;
-      }
-    });
+  updateAssignments(assignment: Assignment): Observable<any> {
+    // this.assignments.forEach((assignment, i) => {
+    //   if(assignment === assignment){
+    //     this.assignments[i] = assignment;
+    //   }
+    // });
 
-    this.loggingService.log(assignment.name, 'updated');
+    // this.loggingService.log(assignment.name, 'updated');
 
-    return of('assignment updated!');
+    // return of('assignment updated!');
+
+    return this.http.put<Assignment>(this.urlOne, assignment);
+
   }
-  deleteAssignment(deletedAssignment: Assignment): Observable<string> {
-    this.assignments.forEach((assignment, i) => {
-      if(assignment === deletedAssignment) {
-        this.assignments.splice(i, 1);
-      }
-    });
+  deleteAssignment(deletedAssignment: Assignment): Observable<any> {
+    // this.assignments.forEach((assignment, i) => {
+    //   if(assignment === deletedAssignment) {
+    //     this.assignments.splice(i, 1);
+    //   }
+    // });
 
-    this.loggingService.log(deletedAssignment.name, 'deleted');
+    // this.loggingService.log(deletedAssignment.name, 'deleted');
 
-    return of('assignment deleted');
+    // return of('assignment deleted');
+
+    const newUrl = this.urlOne + '/' + deletedAssignment._id;
+
+    return this.http.delete(newUrl);
+
   }
 
 }

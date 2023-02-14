@@ -35,16 +35,16 @@ export class AssignmentDetailComponent implements OnInit {
     this.passedAssignment.submitted = true;
 
     this.assignmentsService.updateAssignments(this.passedAssignment)
-    .subscribe(result => console.log(result));
+    .subscribe(success => console.log(success));
   }
 
   onDelete() {
     this.assignmentsService.deleteAssignment(this.passedAssignment)
-    .subscribe(result => console.log(result));
+    .subscribe(res => this.router.navigate(['/home']));
 
     // this.passedAssignment = null;
 
-    this.router.navigate(['/home']);
+
   }
 
   onClickEdit() {

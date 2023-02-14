@@ -46,9 +46,10 @@ export class EditAssignmentComponent implements OnInit {
       }
 
       this.assignmentsService.updateAssignments(this.assignment)
-      .subscribe(assignment => console.log(this.assignment.name + ' updated'));
+      .subscribe(assignment =>
+        this.router.navigate(['/assignment/' + this.assignment.id]));
 
-      this.router.navigate(['/home']);
+
   }
 
 }
