@@ -27,8 +27,60 @@ mat-flat-button color="accent"
     </a>
 </div>
 
-<mat-list *ngFor="let assignment of assignments">
-    <!-- <nav><a routerLink="/assignment/{{assignment.id}}"> -->
+<mat-tab-group>
+<mat-tab label="Due">
+<div *ngFor="let assignment of assignments">
+<mat-card *ngIf="assignment.submitted === false">
+    <div class="header">
+        <div class="left">
+        <mat-card-title>{{ assignment.name }}</mat-card-title>
+        <mat-card-subtitle>
+            Due {{ assignment.dueDate | date}}
+        </mat-card-subtitle>
+        </div>
+        <div class="right">
+            <img mat-card-avatar src="../../assets/images/harold.jpeg" alt="harold">
+        </div>
+    </div>
+    <mat-card-content>An example of displaying content of a card</mat-card-content>
+    <img mat-card-imgae src="../../assets/images/writing.jpeg" alt="writing" class="card-image">
+    <mat-card-footer>
+        <mat-card-actions>
+            <button mat-stroked-button color="primary" (click)="setSelected(assignment)">Detail</button>
+        </mat-card-actions>    
+    </mat-card-footer>
+</mat-card>
+</div>
+</mat-tab>
+
+<mat-tab label="Submitted">
+    <div *ngFor="let assignment of assignments">
+    <mat-card *ngIf="assignment.submitted === true">
+        <div class="header">
+            <div class="left">
+            <mat-card-title>{{ assignment.name }}</mat-card-title>
+            <mat-card-subtitle>
+              Submitted
+            </mat-card-subtitle>
+            </div>
+            <div class="right">
+                <img mat-card-avatar src="../../assets/images/harold.jpeg" alt="harold">
+            </div>
+        </div>
+        <mat-card-content>An example of displaying content of a card</mat-card-content>
+        <img mat-card-image src="../../assets/images/writing.jpeg" alt="writing" class="card-image">
+        <mat-card-footer>
+            <mat-card-actions>
+                <button mat-stroked-button color="primary" (click)="setSelected(assignment)">Detail</button>
+            </mat-card-actions>    
+        </mat-card-footer>
+    </mat-card>
+    </div>
+    </mat-tab>
+
+</mat-tab-group>
+
+<!-- <mat-list *ngFor="let assignment of assignments">
 <h3 mat-subheader>{{ assignment.dueDate | date}}</h3>
 <mat-list-item (click)="setSelected(assignment)">
 <p appSubmitted *ngIf="assignment.submitted; else unsubmitted">
@@ -39,8 +91,7 @@ mat-flat-button color="accent"
     </ng-template>
 </mat-list-item>
 <mat-divider></mat-divider>
-<!-- </a></nav> -->
-</mat-list>
+</mat-list> -->
 
 </main>
 

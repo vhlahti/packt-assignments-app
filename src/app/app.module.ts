@@ -23,6 +23,10 @@ import { EditAssignmentComponent } from './assignments/assignment-detail/edit-as
 import { AuthGuard } from './shared/auth.guard';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
+import { SnackbarComponent } from './snackbar/snackbar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
   {path: '', component: AssignmentsComponent},
@@ -43,7 +47,8 @@ const routes: Routes = [
     SubmittedDirective,
     AssignmentDetailComponent,
     AddAssignmentComponent,
-    EditAssignmentComponent
+    EditAssignmentComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,13 @@ const routes: Routes = [
     MatCheckboxModule,
     RouterModule.forRoot(routes),
     MatSlideToggleModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule,
+    MatStepperModule,
+    MatSnackBarModule
+  ],
+  entryComponents: [
+    SnackbarComponent
   ],
   providers: [AssignmentsService],
   bootstrap: [AppComponent]
