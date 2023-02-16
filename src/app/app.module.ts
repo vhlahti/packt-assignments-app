@@ -27,6 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 const routes: Routes = [
   {path: '', component: AssignmentsComponent},
@@ -68,7 +69,8 @@ const routes: Routes = [
     HttpClientModule,
     MatTabsModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ScrollingModule
   ],
   entryComponents: [
     SnackbarComponent

@@ -1,10 +1,10 @@
 <div class="container" *ngIf="assignment">
-<h1>Editing assignment {{ assignment.name }}</h1>
-<form ngForm class="form">
+<h1>Editing assignment: {{ assignment.name }}</h1>
+<form ngForm class="form" autocomplete="off">
     <mat-form-field>
         <input
         matInput
-        placeholder="Edit the assignments name"
+        placeholder="Edit the assignment name"
         [(ngModel)]="assignmentName"
         name="assignment-name">
     </mat-form-field>

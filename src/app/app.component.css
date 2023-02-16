@@ -5,3 +5,11 @@
     justify-content: space-between;
     margin: 0 8px 2.5em 8px;
 }
+h1 {
+    padding: 1rem;
+}
+mat-slide-toggle {
+    margin-right: 1rem;
+    margin-top: -15px;
+    margin-left: 1rem;
+}

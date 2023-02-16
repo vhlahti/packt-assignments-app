@@ -15,8 +15,6 @@
 
 <!-- styling with custom directive 'submitted.directive.ts'-->
 
-<section class="mainFrame">
-
 <main class="container">
 
 <div class="addBtn">
@@ -29,7 +27,7 @@ mat-flat-button color="accent"
 
 <mat-tab-group>
 <mat-tab label="Due">
-<div *ngFor="let assignment of assignments">
+<div class="cardBox" *ngFor="let assignment of assignments">
 <mat-card *ngIf="assignment.submitted === false">
     <div class="header">
         <div class="left">
@@ -93,11 +91,10 @@ mat-flat-button color="accent"
 <mat-divider></mat-divider>
 </mat-list> -->
 
-</main>
-
 <!-- <app-add-assignment (newAssignment)="onNewAssignment($event)"
 *ngIf="formVisible"></app-add-assignment> -->
 
 <!-- <app-assignment-detail [passedAssignment]="selectedAssignment"></app-assignment-detail> -->
 
-</section>
+</main>
+

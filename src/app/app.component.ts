@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'packt-assignments-app';
-  appName = 'My Assignments App';
+  appName = 'Assignments App';
 
   constructor(private authService: AuthService, private router: Router) {}
 

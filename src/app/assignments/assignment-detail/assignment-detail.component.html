@@ -9,11 +9,11 @@
         (click)="onAssignmentSubmitted()">
         Mark as submitted</mat-checkbox>
         
-        <button mat-stroked-button color="primary" #edit
+        <button mat-stroked-button color="primary" #edit id="edit"
         [disabled]="!isAdmin()"
         (click)="onClickEdit()">Edit</button>
 
-        <button mat-flat-button color="warn" #delete
+        <button mat-flat-button color="warn" #delete id="delete"
         (click)="onDelete()">DELETE</button>
     </div>
     </mat-card>

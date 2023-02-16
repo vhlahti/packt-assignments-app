@@ -1,6 +1,6 @@
 <mat-vertical-stepper>
 <mat-step label="Assignment name">
-<form ngForm #assignmentsForm class="form">
+<form ngForm #assignmentsForm class="form" autocomplete="off">
     <mat-form-field>
         <input matInput
         #assignmentName
@@ -12,7 +12,7 @@
 </mat-step>
 
 <mat-step label="Due date">
-<form class="form">
+<form class="form" autocomplete="off">
     <mat-form-field>
         <input matInput
         [matDatepicker]="picker"
